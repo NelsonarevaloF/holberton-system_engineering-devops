@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#display the PID, along with the process name
+pgrep -f 4-to_infinity | xargs kill -s SIGTERM
