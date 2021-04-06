@@ -1,0 +1,4 @@
+#config file for remote ssh connections
+Host *
+    PasswordAuthentication no
+    IdentityFile ~/.ssh/holberton
