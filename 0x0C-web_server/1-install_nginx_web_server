@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# this script Install nginx web server
+apt-get update
+apt-get install -y nginx
+echo "Holberton School" > /var/www/html/index.html
+echo "# Configuration file for nginx server.
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /var/www/html;
+    index index.html index.htm;
+    server_name _;
+}" > /etc/nginx/sites-available/default
+service nginx restart
