@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# installs nginx
+apt-get -y update
+apt-get -y upgrade
+apt-get -y install nginx
+echo "Holberton School" > /var/www/html/index.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+echo "#Config file for NGINX server.
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    add_header X-Served-By $HOSTNAME;
+    root /var/www/html;
+    index index.html index.htm;
+    server_name _;
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=dQw4w9WgXcQ;
+    }
+    error_page 404 /404.html;
+}" > /etc/nginx/sites-available/default
+service nginx restart
