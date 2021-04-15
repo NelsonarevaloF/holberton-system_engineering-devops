@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# this script Install nginx web server
+# Bash script that configures a new Ubuntu machine with Nginx on it.
 apt-get update
 apt-get install -y nginx
 echo "Holberton School" > /var/www/html/index.html
