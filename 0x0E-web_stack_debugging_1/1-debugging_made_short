@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# this script will try to find a solution about why the web server isn't listening the port 80
+ln -sfn /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx start
+rm -rf /var/run/nginx.pid
