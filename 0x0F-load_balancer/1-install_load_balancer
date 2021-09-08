@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 # Install and configure HAproxy
+apt-get -y install --no-install-recommends software-properties-common
+add-apt-repository ppa:vbernat/haproxy-1.8
 apt-get -y update
-apt-get install --no-install-recommends software-properties-common
-add-apt-repository ppa:vbernat/haproxy-1.6
-apt-get install haproxy=1.6.\*
+sudo apt-get -y install haproxy=1.8.\*
 echo "
 frontend lb
         bind *:80
         mode http
-        option forwardfor
         default_backend servers
         
 backend servers
         balance roundrobin
-        server 1968-web-01 34.139.180.73:80
-        server 1968-web-02 18.214.98.225:80" >> /etc/haproxy/haproxy.cfg
-service haproxy restart
+        server 1968-web-01 34.139.180.73:80 check
+        server 1968-web-02 18.214.98.225:80 check
+" >> /etc/haproxy/haproxy.cfg
+sudo service haproxy restart
